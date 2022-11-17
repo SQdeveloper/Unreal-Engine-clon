@@ -6,6 +6,7 @@ const contSlider = document.querySelector(".contSlider");
 const cursor = document.querySelector(".cursor");
 const arrayColor = ["#00abf5", "#2ae5b3", "#ff5f68", "#00abf5", "#2ae5b3", "#ff5f68"];
 const sliderText = document.querySelectorAll(".containerSlider-text");
+const perfilImg = document.querySelectorAll(".perfil__img-fondo");
 const arrayText = [
     ['Un sinfín de posibilidades', `Sube de nivel con el motor más fiable del mundo. Un control 
     total, unos gráficos magnificos y unas herramientas pensadas
@@ -36,6 +37,19 @@ contSlider.addEventListener("mouseout", ()=>{
     cursor.style.opacity = "0";
 })
 
+/**/
+perfilImg.forEach(img=>{
+    img.addEventListener("mousemove",e=>{
+        cursor.style.setProperty("--x", `${e.clientX}px`)
+        cursor.style.setProperty("--y", `${e.clientY}px`)
+        cursor.style.opacity = "1";
+    })
+    
+    img.addEventListener("mouseout", ()=>{
+        cursor.style.opacity = "0";
+    })
+});
+
 /*puntos del slider*/
 function changeColor(color) {
     cursor.style.borderColor = color;
@@ -55,11 +69,6 @@ function addRemoveAnimation(textH2, textP) {
     setTimeout(()=>{sliderText[0].style.animation = "";sliderText[1].style.animation = ""}, 1000);
 }
 
-// pointers[1].addEventListener('click', ()=>{
-//     sliderText[0].style.animation = "change 1s";
-//     sliderText[0].textContent = "Jefferson Sivla Quinto";
-//     setTimeout(()=>{sliderText[0].style.animation = ""}, 1000)
-// })
 pointers.forEach((point, i)=>{
     let position = i;
     point.addEventListener("click", ()=>{
@@ -73,7 +82,6 @@ pointers.forEach((point, i)=>{
             case 5: changeColor("#e22bab"); addRemoveAnimation(arrayText[i][0], arrayText[i][1]); break;
         }
     })
-    
 });
 
 document.addEventListener("scroll", ()=>{
