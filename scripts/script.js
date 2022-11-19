@@ -87,18 +87,30 @@ pointers.forEach((point, i)=>{
 document.addEventListener("scroll", ()=>{
     if(this.scrollY > 333) {
         video.style.position = "absolute";
-        video.style.width = `${widthVideo - 800}px`
         video.style.opacity = ".5";
         video.style.top = "100%";
+        if(window.innerWidth <= 1100){
+            video.style.width = `${widthVideo - 600}px`
+        }else{
+            video.style.width = `${widthVideo - 800}px`
+        }
     }
     else if(this.scrollY > 167) {
         video.style.position = "fixed";
-        video.style.width = `${widthVideo - 600}px`;
         video.style.opacity = "1";
         video.style.top = "auto"
+        if(window.innerWidth <= 1100){
+            video.style.width = `${widthVideo - 400}px`;
+        }else{
+            video.style.width = `${widthVideo - 600}px`;
+        }
     }
     else if(this.scrollY > 50) {
-        video.style.width = `${widthVideo - 400}px`;
+        if(window.innerWidth <= 1100){
+            video.style.width = `${widthVideo - 200}px`;
+        }else{
+            video.style.width = `${widthVideo - 400}px`;
+        }
     }
     else {
         video.style.width = "100%";

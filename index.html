@@ -14,6 +14,11 @@
           </svg>
     </div>
     <header class="header">
+        <a class="header__menu">
+            <span class="header__menu-span menu-span-first"></span>
+            <span class="header__menu-span menu-span-second"></span>
+            <span class="header__menu-span menu-span-third"></span>
+        </a>
         <div class="header__cont-left">
             <a href="" class="header__enlace header__logo">
                 <img class="header__img logo__img" src="./assets/svg/logo-unreal.svg" alt="">
@@ -44,7 +49,12 @@
     </header>
     
     <main class="main">
-        <section class="home">
+        <section class="home-app">
+            <span class="home-app__span">La herramienta de creación 3D en tiempo real más abierta y avanzada del mundo</span>
+            <a class="home-app__enlace" href="" target="_blank">más información sobre ue5</a>
+            <hr class="home-app__line">
+        </section>
+        <section class="home" id="home">
             <video class="home__video" muted autoplay loop>
                 <source src="./assets/video/home-video.mp4"/>
             </video>
@@ -218,7 +228,7 @@
                     <img class="picture__img" src="./assets/redesSociales/instagram.svg"/>
                     <img class="picture__img" src="./assets/redesSociales/facebook.svg"/>
                 </picture>
-                <a href="" class="contFirst__up">
+                <a href="#home" class="contFirst__up">
                     <img src="./assets/svg/arrow-up-short.svg" alt="" class="contFirst__up-img">
                     <span class="contFirst__up-span">volver arriba</span>
                 </a>

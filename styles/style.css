@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --color-header: #202337;
     --color-fondo : #0f1129;
@@ -43,6 +47,83 @@ body {
     width: 30px;
     height: 50px;
     filter: invert(100%) sepia(0%) saturate(26%) hue-rotate(296deg) brightness(98%) contrast(105%);
+}
+
+.header__menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4em;
+    height: 3em;
+    background: linear-gradient(-90deg, rgb(63, 196, 248), #039ae6 70%);
+    gap: .3em;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.header__menu-span {
+    width: 2em;
+    height: 3px;
+    background-color: black;
+}
+
+.home-app {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(transparent, var(--color-fondo) 100%), url("../assets/img/fondo-home-app.webp");
+    display: flex;
+    background-size: 100%; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    gap: 2em;
+}
+
+.home-app__span {
+    font-size: 2.5em;
+    width: 90%;
+    text-align: center;
+}
+
+.home-app__enlace {
+    text-decoration: none;
+    color: white;
+    border: 2px solid;
+    border-image: radial-gradient(100% 185.14% at 100% 100%,
+    rgb(52, 195, 255) 0%, rgb(51, 142, 238) 100%) 5 / 2px / 0 stretch;
+    text-transform: uppercase;
+    padding: .7em 1.8em;
+    font-weight: 400;
+    font-size: .8em;
+}
+
+.home-app__line {
+    height: 5em;
+    position: absolute;
+    bottom: .5em;
+    width: 2px;
+    background-color: white;
+    animation: appear 2s infinite ease-out;
+}
+
+@keyframes appear{
+    0% { clip-path: polygon(100% 0, 0 0, 0 0, 100% 0); }
+    50% { clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%); }
+    100% { clip-path: polygon(100% 100%, 0 100%, 0 100%, 100% 100%); }
+}
+
+.home-app__enlace:hover {
+    box-shadow: 
+    0 0 5px rgb(5, 153, 211),
+    0 0 15px rgb(27, 169, 224),
+    0 0 25px rgb(77, 192, 238);
 }
 
 .header {
@@ -225,7 +306,7 @@ body {
     width: 100%;
     background-color: var(--color-fondo);
     padding-bottom: 6em;
-    /* gap: 2em; */
+    padding-top: 4em;
 }
 
 .contSlider {
@@ -265,6 +346,7 @@ body {
     display: flex;
     align-items: center;
     gap: 1em;
+    margin-top: 1em;
 }
 
 .points {
@@ -506,7 +588,7 @@ hr {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(15, 17, 41, .7), var(--color-fondo) 90%);
+    background: linear-gradient(rgba(15, 17, 41, .7), var(--color-fondo) 100%);
 }
 
 .contImg__img {
@@ -558,6 +640,7 @@ hr {
     grid-template-columns: repeat(3, 1fr);
     gap: 4em;
     padding: 0 3em;
+    padding-top: 3em;
     background-color: var(--color-fondo)
 }
 
@@ -802,7 +885,6 @@ hr {
     width: 90%;
     margin: auto;
     gap: 2em;
-    grid-template-columns: repeat(4, 1fr);
 }
 
 .footer__contEnlaces {
@@ -879,10 +961,104 @@ hr {
     filter: invert(48%) sepia(99%) saturate(2503%) hue-rotate(167deg) brightness(93%) contrast(103%);
 }
 
+@media screen and (max-width:1040px) {
+    .containerSlider-h2 {
+        left: 4rem;
+    }
+    .containerSlider-p {
+        right: 4em;
+    }
+}
+
 @media screen and (max-width:990px ) {
     .header__nav {
         position: absolute;
         z-index: -1;
         opacity: 0;
+    }
+    .home-app {
+        opacity: 1;
+        position: relative;
+    }
+
+    .home, .space {
+        opacity: 0;
+        position: absolute;
+        overflow: hidden;
+        z-index: -1;
+        top: 0;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .header__cont-right {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+    .header__logo-img {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .aboutMe__description {
+        width: 90%;
+    }
+    .contImg__contText {
+        font-size: .8em;
+        width: 90%;
+    }
+    .comunidad__perfiles, .aboutMe__recomendations, .download {
+        grid-template-columns: none;
+        grid-template-rows: repeat(3, 1fr);
+    }
+    .download {
+        font-size: .8em;
+    }
+    .download__card {
+        min-height: 16em;
+    }
+    .contBoletin {
+        font-size: .8em;
+        padding: 3em;
+    }
+    .contBoletin__h2 {
+        font-size: 1.5em;
+        font-weight: 500;
+    }
+    .contInput {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        width: 70%;
+    }
+    .contInput__input {
+        width: 100%
+    }
+    .recomendation {
+        align-items: center;
+        text-align: center;
+    }
+    .picture__img {
+        width: 30px;
+        height: 30px;
+    }
+    .containerSlider {
+        font-size: .8em;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .home-app__span { font-size: 1.8em }
+    .noticias__cards {
+        flex-direction: column;
+    }
+    .cards__card { width: 100% }
+    .contSecond {
+        flex-wrap: wrap;
+        gap: 4em;
+    }
+    .contEnlaces__span {
+        max-width: 17em;
     }
 }
