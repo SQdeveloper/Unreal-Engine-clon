@@ -49,11 +49,50 @@ body {
     filter: invert(100%) sepia(0%) saturate(26%) hue-rotate(296deg) brightness(98%) contrast(105%);
 }
 
+.menuH {
+    position: fixed;
+    width: 100%;
+    height: calc(100vh - 3em);
+    bottom: 0;
+    background-color: var(--color-fondo);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    z-index: 2;
+    transition: transform 1s;
+}
+
+.menuH-active {
+    transform: none;
+}
+
+.menuH__enlaces {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    padding: 0 1.5em;
+    width: 100%;
+    height: 4em;
+    border-bottom: 2px solid var(--color-header);
+}
+
+.menuH__enlaces-span {
+    text-transform: uppercase;
+    font-size: .8em;
+    letter-spacing: 2px;
+}
+
+.menuH__enlaces-img {
+    width: 2em;
+    filter: invert(67%) sepia(76%) saturate(5186%) hue-rotate(166deg) brightness(102%) contrast(101%);
+}
+
 .header__menu {
     position: absolute;
     display: flex;
     flex-direction: column; 
-    display: flex;
     justify-content: center;
     align-items: center;
     width: 4em;
@@ -69,7 +108,13 @@ body {
     width: 2em;
     height: 3px;
     background-color: black;
+    transition: transform .6s, opacity .6s;
+    transform-origin: 0px 100%;
 }
+
+.menu-span-first-active  { transform: rotate(45deg) translate(-1px, -5px) }
+.menu-span-second-active { transform: translate(-2em); opacity: 0;}
+.menu-span-third-active  { transform: rotate(-45deg) translate(1px, 6px) }
 
 .home-app {
     position: absolute;
@@ -1078,14 +1123,25 @@ hr {
     }
 }
 
+@media screen and (max-width:630px) {
+    .containerSlider-text {
+        opacity: 0;
+    }
+}
+
 @media screen and (max-width:480px) {
-    .description__title { font-size: 2.5em }
-    .containerSlider { padding-bottom: 0;}
-    .containerSlider-text { top: .5em; }
-    .containerSlider-h2 {
+    .header__menu-span       { width: 1.6em; }
+    .header__menu            { width:3em }
+    .description__title      { font-size: 2.5em }
+    .containerSlider         { padding-bottom: 0;}
+    .containerSlider-text    { top: .5em; opacity: 1}
+    .containerSlider-p       { opacity: 0; }
+    .menu-span-first-active  { transform: rotate(45deg) translate(1px, -3px) }
+    .menu-span-second-active { opacity: 0 }
+    .menu-span-third-active  { transform: rotate(-45deg) translate(1px, 4px) }
+    .containerSlider-h2   {
         left: 50%;
         transform: translateX(-50%);
         text-align: center;
     }
-    .containerSlider-p { opacity: 0; }
 }

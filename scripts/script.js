@@ -1,13 +1,16 @@
-const video = document.querySelector(".home__video");
+const video      = document.querySelector(".home__video");
 const widthVideo = video.offsetWidth;
-const pointers = document.querySelectorAll(".points");
-const swripper = document.querySelector(".swripper");
+const pointers   = document.querySelectorAll(".points");
+const swripper   = document.querySelector(".swripper");
 const contSlider = document.querySelector(".contSlider");
-const cursor = document.querySelector(".cursor");
+const cursor     = document.querySelector(".cursor");
 const arrayColor = ["#00abf5", "#2ae5b3", "#ff5f68", "#00abf5", "#2ae5b3", "#ff5f68"];
 const sliderText = document.querySelectorAll(".containerSlider-text");
-const perfilImg = document.querySelectorAll(".perfil__img-fondo");
-const arrayText = [
+const perfilImg  = document.querySelectorAll(".perfil__img-fondo");
+const headerMenu = document.querySelector(".header__menu");
+const menuSpan   = document.querySelectorAll(".header__menu-span");
+const menu       = document.querySelector(".menuH");
+const arrayText  = [
     ['Un sinfín de posibilidades', `Sube de nivel con el motor más fiable del mundo. Un control 
     total, unos gráficos magnificos y unas herramientas pensadas
     para cada juego. Es tú proyectos, créalo a tu manera.`],
@@ -25,6 +28,12 @@ const arrayText = [
     dispongas el control absoluto. El tiempo real, realismo y presición ahora van de la mano.`],
 ]
 
+headerMenu.addEventListener("click", ()=>{
+    menu.classList.toggle("menuH-active");
+    menuSpan[0].classList.toggle("menu-span-first-active");
+    menuSpan[1].classList.toggle("menu-span-second-active");
+    menuSpan[2].classList.toggle("menu-span-third-active");
+});
 
 /*codigo para que la configuración del mause solo se vea dentro del slider*/
 contSlider.addEventListener("mousemove", (event)=>{
@@ -89,7 +98,7 @@ document.addEventListener("scroll", ()=>{
         video.style.position = "absolute";
         video.style.opacity = ".5";
         video.style.top = "100%";
-        if(window.innerWidth <= 1100){
+        if(window.innerWidth <= 1250){
             video.style.width = `${widthVideo - 600}px`
         }else{
             video.style.width = `${widthVideo - 800}px`
@@ -99,14 +108,14 @@ document.addEventListener("scroll", ()=>{
         video.style.position = "fixed";
         video.style.opacity = "1";
         video.style.top = "auto"
-        if(window.innerWidth <= 1100){
+        if(window.innerWidth <= 1250){
             video.style.width = `${widthVideo - 400}px`;
         }else{
             video.style.width = `${widthVideo - 600}px`;
         }
     }
     else if(this.scrollY > 50) {
-        if(window.innerWidth <= 1100){
+        if(window.innerWidth <= 1250){
             video.style.width = `${widthVideo - 200}px`;
         }else{
             video.style.width = `${widthVideo - 400}px`;
