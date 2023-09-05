@@ -1,6 +1,6 @@
 const video      = document.querySelector(".home__video");
 const widthVideo = video.offsetWidth;
-const pointers   = document.querySelectorAll(".points");
+const bars   = document.querySelectorAll(".bar");
 const swripper   = document.querySelector(".swripper");
 const contSlider = document.querySelector(".contSlider");
 const cursor     = document.querySelector(".cursor");
@@ -10,6 +10,7 @@ const perfilImg  = document.querySelectorAll(".perfil__img-fondo");
 const headerMenu = document.querySelector(".header__menu");
 const menuSpan   = document.querySelectorAll(".header__menu-span");
 const menu       = document.querySelector(".menuH");
+const body       = document.body;
 const arrayText  = [
     ['Un sinfín de posibilidades', `Sube de nivel con el motor más fiable del mundo. Un control 
     total, unos gráficos magnificos y unas herramientas pensadas
@@ -28,14 +29,16 @@ const arrayText  = [
     dispongas el control absoluto. El tiempo real, realismo y presición ahora van de la mano.`],
 ]
 
+//codigo para activar la animación de las barras del menú
 headerMenu.addEventListener("click", ()=>{
+    body.classList.toggle("active");
     menu.classList.toggle("menuH-active");
     menuSpan[0].classList.toggle("menu-span-first-active");
     menuSpan[1].classList.toggle("menu-span-second-active");
     menuSpan[2].classList.toggle("menu-span-third-active");
 });
 
-/*codigo para que la configuración del mause solo se vea dentro del slider*/
+/*codigo para que la configuración del mouse solo se vea dentro del slider*/
 contSlider.addEventListener("mousemove", (event)=>{
     cursor.style.setProperty("--x", `${event.clientX}px`)
     cursor.style.setProperty("--y", `${event.clientY}px`)
@@ -59,17 +62,6 @@ perfilImg.forEach(img=>{
     })
 });
 
-/*puntos del slider*/
-function changeColor(color) {
-    cursor.style.borderColor = color;
-    pointers[0].style.backgroundColor  = color;
-    pointers[1].style.backgroundColor  = color;
-    pointers[2].style.backgroundColor  = color;
-    pointers[3].style.backgroundColor  = color;
-    pointers[4].style.backgroundColor  = color;
-    pointers[5].style.backgroundColor  = color;
-}
-
 function addRemoveAnimation(textH2, textP) {
     sliderText[0].style.animation = "change 1s";
     sliderText[0].textContent = textH2;
@@ -78,18 +70,15 @@ function addRemoveAnimation(textH2, textP) {
     setTimeout(()=>{sliderText[0].style.animation = "";sliderText[1].style.animation = ""}, 1000);
 }
 
-pointers.forEach((point, i)=>{
+bars.forEach((bar, i)=>{
     let position = i;
-    point.addEventListener("click", ()=>{
+    bar.addEventListener("click", ()=>{
         swripper.style.transform = `translateX(${position * -(100/6)}%)`
-        switch(i){
-            case 0: changeColor("#00abf5"); addRemoveAnimation(arrayText[i][0], arrayText[i][1]); break;
-            case 1: changeColor("#2ae5b3"); addRemoveAnimation(arrayText[i][0], arrayText[i][1]); break;
-            case 2: changeColor("#ff5f68"); addRemoveAnimation(arrayText[i][0], arrayText[i][1]); break;
-            case 3: changeColor("#8a2be2"); addRemoveAnimation(arrayText[i][0], arrayText[i][1]); break;
-            case 4: changeColor("#d6e22b"); addRemoveAnimation(arrayText[i][0], arrayText[i][1]); break;
-            case 5: changeColor("#e22bab"); addRemoveAnimation(arrayText[i][0], arrayText[i][1]); break;
-        }
+        addRemoveAnimation(arrayText[i][0], arrayText[i][1]);
+        bars.forEach(b=>{
+            b.classList.remove("active");            
+        });
+        bar.classList.add("active");
     })
 });
 

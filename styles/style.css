@@ -53,7 +53,7 @@ body {
     position: fixed;
     width: 100%;
     height: calc(100vh - 3em);
-    bottom: 0;
+    top: 3em;
     background-color: var(--color-fondo);
     display: flex;
     flex-direction: column;
@@ -64,6 +64,10 @@ body {
 
 .menuH-active {
     transform: none;
+}
+
+body.active {
+    overflow: hidden;
 }
 
 .menuH__enlaces {
@@ -356,8 +360,7 @@ body {
 }
 
 .contSlider {
-    width: 80%;
-    /* height: 600px; */
+    width: 80%;    
     overflow-x : hidden;
     cursor: none;
 }
@@ -388,29 +391,26 @@ body {
     transform: scale(1.2);
 }
 
-.cont-points {
+.cont-bars {
     display: flex;
     align-items: center;
     gap: 1em;
+    width: 80%;
     margin-top: 1em;
 }
 
-.points {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: var(--color-celeste);
+.bar {
+    flex: 1;
+    height: .4em;
+    border-bottom: 5px solid rgb(182, 182, 182);
     cursor: pointer;
+    padding-top: 1em;
+    transition: flex .6s;
 }
 
-.points-circule {
-    height: 50%;
-    width: 50%;
-    border-radius: 50%;
-    background-color: white;
+.bar.active {
+    flex: 2;
+    border-color: white;    
 }
 
 @keyframes change {
@@ -1138,7 +1138,8 @@ hr {
     .containerSlider-p       { opacity: 0; }
     .menu-span-first-active  { transform: rotate(45deg) translate(1px, -3px) }
     .menu-span-second-active { opacity: 0 }
-    .menu-span-third-active  { transform: rotate(-45deg) translate(1px, 4px) }
+    .menu-span-third-active  { transform: rotate(-45deg) translate(2px, 3px) }
+    .contSlider, .cont-bars { width: 90%; }    
     .containerSlider-h2   {
         left: 50%;
         transform: translateX(-50%);
